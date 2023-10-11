@@ -23,13 +23,11 @@ class IngresarDatosActivity : AppCompatActivity() {
             val minutos = findViewById<EditText>(R.id.Minutos).text.toString()
 
 
-                val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra("NOMBRE", nombre)
-                    putExtra("HORA", hora)
-                    putExtra("MINUTOS", minutos)
-
-
-                }
+            val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+                putExtra(AlarmClock.EXTRA_MESSAGE, nombre)
+                putExtra(AlarmClock.EXTRA_HOUR, hora)
+                putExtra(AlarmClock.EXTRA_MINUTES, minutos)
+            }
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             }

@@ -57,9 +57,18 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             val nombre = data?.getStringExtra("NOMBRE")
-            val hora = data?.getIntExtra("HORA", 0)
-            val minutos = data?.getIntExtra("MINUTOS", 0)
+            val hora = data?.getIntExtra(AlarmClock.EXTRA_HOUR, 0)
+            val minutos = data?.getIntExtra(AlarmClock.EXTRA_MINUTES, 0)
 
+
+                val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+                    putExtra(AlarmClock.EXTRA_MESSAGE, nombre)
+                    putExtra(AlarmClock.EXTRA_HOUR, hora)
+                    putExtra(AlarmClock.EXTRA_MINUTES, minutos)
+
+                }
+                startActivity(intent)
+            }
         }
     }
-}
+
